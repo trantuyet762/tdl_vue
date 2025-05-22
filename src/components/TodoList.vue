@@ -1,13 +1,8 @@
 <template>
   <div class="todo-card">
-    <h2 >Todo App</h2>
+    <h2 class="text-center mb-4 font-bold text-[1.5rem]">Todo App</h2>
     <div class="add-todo">
-      <input 
-        v-model="newTodo" 
-        @keyup.enter="addTodo"
-        placeholder="Add your new todo"
-        type="text"
-      >
+      <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Add your new todo" type="text" />
       <button @click="addTodo" class="add-btn" aria-label="Add todo">
         <span class="plus-icon">+</span>
       </button>
@@ -16,12 +11,26 @@
       <li v-for="(todo, index) in todos" :key="index">
         <span>{{ todo.text }}</span>
         <button @click="removeTodo(index)" class="delete-btn" aria-label="Delete todo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="#fff" d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-4.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <rect width="24" height="24" fill="none" />
+            <path
+              fill="#fff"
+              d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-4.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"
+            />
+          </svg>
         </button>
       </li>
     </ul>
     <div class="footer-row">
-      <span v-if="todos.length > 0">You have {{ todos.length }} pending task<span v-if="todos.length > 1">s</span></span>
+      <span v-if="todos.length > 0"
+        >You have {{ todos.length }} pending task<span v-if="todos.length > 1">s</span></span
+      >
       <button v-if="todos.length > 0" @click="clearAll" class="clear-btn">Clear All</button>
     </div>
   </div>
@@ -36,7 +45,7 @@ const todos = ref([])
 const addTodo = () => {
   if (newTodo.value.trim()) {
     todos.value.push({
-      text: newTodo.value
+      text: newTodo.value,
     })
     newTodo.value = ''
   }
@@ -52,10 +61,16 @@ const clearAll = () => {
 </script>
 
 <style scoped>
+h2 {
+  margin: 0 0 18px 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+}
 .todo-card {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   max-width: 340px;
   width: 100%;
   margin: 0 auto;
@@ -65,20 +80,12 @@ const clearAll = () => {
   align-items: stretch;
 }
 
-h2 {
-  margin: 0 0 18px 0;
-  font-size: 1.6rem;
-  font-weight: bold;
-  text-align: center;
-
-}
-
 .add-todo {
   display: flex;
   margin-bottom: 18px;
 }
 
-input[type="text"] {
+input[type='text'] {
   flex: 1;
   padding: 10px 12px;
   font-size: 15px;
@@ -88,7 +95,7 @@ input[type="text"] {
   background: #f7f7f7;
   transition: border 0.2s;
 }
-input[type="text"]:focus {
+input[type='text']:focus {
   border: 1.5px solid #a259ec;
 }
 
@@ -161,4 +168,4 @@ input[type="text"]:focus {
 .clear-btn:hover {
   background: #7c3aed;
 }
-</style> 
+</style>
